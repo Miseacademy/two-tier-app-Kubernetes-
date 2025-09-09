@@ -15,15 +15,15 @@ spec:
     spec:
       containers:
       - name: flask
-        image: misacademy/two-tier:v1
+        image: misacademy/two-tier:v2
         env:
-          - name: MYSQL_HOST
-            value: "mysql-service.mysql-db.svc.cluster.local"
-          - name: MYSQL_PASSWORD
-            value: "admin"
-          - name: MYSQL_USER
-            value: "root"
-          - name: MYSQL_DB
-            value: "mysql"
+          - name: MYSQL_ROOT_PASSWORD
+            value: admin
         ports:
           - containerPort: 5000  
+        envFrom:
+          - secretRef:
+             name: mysql-secret
+          - configMapRef:
+             name: mysql-config
+
