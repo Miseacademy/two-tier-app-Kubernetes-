@@ -16,9 +16,6 @@ spec:
       containers:
       - name: flask
         image: misacademy/two-tier:v2
-        env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: admin
         ports:
           - containerPort: 5000  
         envFrom:
